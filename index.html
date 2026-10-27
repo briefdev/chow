@@ -637,9 +637,9 @@ const PRODUCTS=[
   {id:15,cat:'jackets', name:'بومبر «شمال»', price:349, old:429, colors:['olive','black'], sizes:S5, badge:null, rating:4.9, reviews:96,  sold:445,  desc:'بومبر بحشوة خفيفة مبطّنة، أساور مضفورة مزدوجة، وجيوب داخلية — درعك لأمسيات البرّ.'},
   {id:16,cat:'jackets', name:'جاكيت دنيم «ساحل»', price:299, colors:['grey','black'], sizes:S5, badge:null, rating:4.5, reviews:63,  sold:322,  desc:'دنيم غامق بغسل جاف، قصّة مريحة عند الكتف وبطانة قطنية ناعمة — أفضل صديق لطبقات الشتاء.'},
   {id:17,cat:'jackets', name:'سترة عمل «ورشة»', price:319, colors:['clay','olive'], sizes:S5, badge:'new', rating:4.6, reviews:28,  sold:160,  desc:'سترة كانفس قطنية بجيوب صدر كبيرة وأزرار معدنية ثقيلة — عملية بروح عتيقة.'},
-  {id:18,cat:'accessories', name:'قلنسوة تشاو مطرّزة', price:89, colors:['black','cream','olive'], sizes:[], badge:'hot', rating:4.9, reviews:271, sold:2860, desc:'قلنسوة مزدوجة الطبقة بتطريز تشاو ثلاثي الأبعاد وحافة مضفورة لا تضغط على الجبهة.'},
-  {id:19,cat:'accessories', name:'كاب «شمعة» بيسبول', price:99, colors:['clay','cream'], sizes:[], badge:null, rating:4.6, reviews:84,  sold:733,  desc:'كاب بقصّة مسطحة، حزام خلفي معدني، وقطعة علو بلا خياطة — شمسية المدينة المفضلة.'},
-  {id:20,cat:'accessories', name:'قبعة صوف «شتاء»', price:119, colors:['grey','cream'], sizes:[], badge:'new', rating:4.7, reviews:47,  sold:402,  desc:'صوف ميرينو ناعم غير مثير للحكة، بطاقة منسوجة جانبية وحاشية مطوية — دفء فوري.'}
+  {id:18,cat:'accessories', imgs:1, name:'قلنسوة تشاو مطرّزة', price:89, colors:['black','cream','olive'], sizes:[], badge:'hot', rating:4.9, reviews:271, sold:2860, desc:'قلنسوة مزدوجة الطبقة بتطريز تشاو ثلاثي الأبعاد وحافة مضفورة لا تضغط على الجبهة.'},
+  {id:19,cat:'accessories', imgs:1, name:'كاب «شمعة» بيسبول', price:99, colors:['clay','cream'], sizes:[], badge:null, rating:4.6, reviews:84,  sold:733,  desc:'كاب بقصّة مسطحة، حزام خلفي معدني، وقطعة علو بلا خياطة — شمسية المدينة المفضلة.'},
+  {id:20,cat:'accessories', imgs:1, name:'قبعة صوف «شتاء»', price:119, colors:['grey','cream'], sizes:[], badge:'new', rating:4.7, reviews:47,  sold:402,  desc:'صوف ميرينو ناعم غير مثير للحكة، بطاقة منسوجة جانبية وحاشية مطوية — دفء فوري.'}
 ];
 const MODALS={
   sizes:{t:'دليل المقاسات',h:`<table class="tsize"><thead><tr><th>المقاس</th><th>الصدر (سم)</th><th>الطول (سم)</th><th>الكتف (سم)</th></tr></thead><tbody><tr><td>S</td><td>55</td><td>69</td><td>45</td></tr><tr><td>M</td><td>57</td><td>71</td><td>47</td></tr><tr><td>L</td><td>59</td><td>73</td><td>49</td></tr><tr><td>XL</td><td>61</td><td>75</td><td>51</td></tr><tr><td>XXL</td><td>63</td><td>77</td><td>53</td></tr></tbody></table><p class="tnote">القياسات تقريبية بفارق ±2 سم. النموذج في الصور يلبس مقاس L وطوله 182 سم. القبعات بمقاس قابل للتعديل يناسب الجميع.</p>`},
@@ -650,9 +650,8 @@ const MODALS={
   privacy:{t:'سياسة الخصوصية',h:`<p>نجمع الحد الأدنى من بياناتك (الاسم، الجوال، العنوان) لإتمام الطلب فقط، ولا نشاركها مع أي طرف خارج شركات الشحن والدفع. يمكنك طلب حذف بياناتك في أي وقت عبر قنوات التواصل.</p>`}
 };
 const HERO_SLIDES=[
-  {seed:'chow-hero-a',alt:'إطلالة من مجموعة تشاو'},
-  {seed:'chow-hero-b',alt:'قطع تشاو اليومية'},
-  {seed:'chow-hero-c',alt:'تفاصيل خامات تشاو'}
+  {src:'images/hero-1.webp',alt:'قطع تشاو اليومية'},
+  {src:'images/hero-2.webp',alt:'تفاصيل خامات تشاو'}
 ];
 const BULLETS=['خامة مُنتقاة تتنفّس وتتحمّل الاستخدام اليومي','قصّة مريحة مُختبرة على مقاسات حقيقية','خياطة مزدوجة في نقاط الشد','غسيل آمن 30° — اللون ثابت بعد 50 غسلة'];
 
@@ -661,7 +660,7 @@ const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const prod=id=>PRODUCTS.find(p=>p.id===+id);
 const catOf=id=>CATS.find(c=>c.id===id);
 const fmt=n=>n.toLocaleString('en-US')+' ر.س';
-const img=(p,i=0,w=700,h=900)=>`https://picsum.photos/seed/${p.seed||'chow-'+p.id}-${'abcd'[i]}/${w}/${h}.jpg`;
+const img=(p,i=0)=>`images/p${p.id}-${i<(p.imgs||4)?i:0}.jpg`;
 const countAr=n=>n===0?'لا منتجات':n===1?'منتج واحد':n===2?'منتجان':n<=10?n+' منتجات':n+' منتجًا';
 const star=f=>`<svg class="st${f?' f':''}" viewBox="0 0 24 24"><path d="M12 2.6l2.8 5.9 6.4.9-4.7 4.4 1.2 6.3L12 17l-5.7 3.1 1.2-6.3L2.8 9.4l6.4-.9L12 2.6z"/></svg>`;
 const stars=r=>Array.from({length:5},(_,i)=>star(i<Math.round(r))).join('');
@@ -736,7 +735,7 @@ function tplHome(){
   <!-- الهيرو: سلايدر صور -->
   <section class="hero"><div class="container">
     <div class="hero__slider" id="hero" aria-roledescription="carousel" aria-label="صور مجموعة تشاو">
-      ${HERO_SLIDES.map((s,i)=>`<figure class="hero__slide${i?'':' on'}" aria-hidden="${i>0}"><img class="mono" src="https://picsum.photos/seed/${s.seed}/1600/1000.jpg" alt="${s.alt}"></figure>`).join('')}
+      ${HERO_SLIDES.map((s,i)=>`<figure class="hero__slide${i?'':' on'}" aria-hidden="${i>0}"><img class="mono" src="${s.src}" alt="${s.alt}"></figure>`).join('')}
       <div class="hero__txt">
         <h1>البسْ <span class="hl">ما يُشبهك<svg viewBox="0 0 220 14" preserveAspectRatio="none"><path d="M3 11 C60 3 150 3 217 9" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></svg></span><br>لا ما يُشبه الجميع.</h1>
         <p class="hero__p">تشاو — علامة سعودية للألبسة اليومية. قطعٌ بخامات تتنفّس، قصّات ترتاح فيها من أول لبسة، وأسعار تحترم جيبك.</p>
@@ -801,8 +800,8 @@ function tplHome(){
         <button class="btn story__btn" data-action="modal" data-key="about">اقرأ قصتنا</button>
       </div>
       <div class="story__vis">
-        <div class="sv__arch"><img src="https://picsum.photos/seed/chow-story-a/640/860.jpg" alt="من ورشة تشاو"></div>
-        <div class="sv__small"><img src="https://picsum.photos/seed/chow-story-b/300/380.jpg" alt="تفاصيل الخامة"></div>
+        <div class="sv__arch"><img src="images/story-a.webp" alt="من ورشة تشاو"></div>
+        <div class="sv__small"><img src="images/p10-1.jpg" alt="تفاصيل الخامة"></div>
       </div>
     </div>
   </section>
@@ -915,8 +914,8 @@ function tplProduct(id){
     ${crumbs([{t:c.name,h:'#/c/'+c.id},{t:p.name}])}
     <div class="pd">
       <div>
-        <div class="pd__main">${badgeHTML(p)}<img id="pdImg" class="mono" src="${img(p,0,900,1125)}" alt="${p.name}"></div>
-        <div class="pd__thumbs">${[0,1,2,3].map(i=>`<button class="${i===0?'on':''}" data-action="img" data-i="${i}"><img class="mono" src="${img(p,i,150,150)}" alt="صورة ${i+1}"></button>`).join('')}</div>
+        <div class="pd__main">${badgeHTML(p)}<img id="pdImg" class="mono" src="${img(p,0)}" alt="${p.name}"></div>
+        <div class="pd__thumbs">${[...Array(p.imgs||4).keys()].map(i=>`<button class="${i===0?'on':''}" data-action="img" data-i="${i}"><img class="mono" src="${img(p,i)}" alt="صورة ${i+1}"></button>`).join('')}</div>
       </div>
       <div class="pd__info">
         <span class="pd__cat">${c.name}</span>
@@ -1045,7 +1044,7 @@ function renderCart(){
   body.innerHTML=cart.map((i,idx)=>{
     const p=prod(i.id);
     return`<div class="citem">
-      <a href="#/p/${p.id}" data-action="close-cart-link"><img src="${img(p,0,140,175)}" alt="${p.name}"></a>
+      <a href="#/p/${p.id}" data-action="close-cart-link"><img src="${img(p,0)}" alt="${p.name}"></a>
       <div>
         <a class="nm" href="#/p/${p.id}" data-action="close-cart-link">${p.name}</a>
         <div class="vr">${PALETTE[i.color].n}${i.size?' · '+i.size:' · مقاس واحد'}</div>
@@ -1112,7 +1111,7 @@ function searchRender(q){
   if(!q){box.innerHTML='';return}
   const res=PRODUCTS.filter(p=>(p.name+' '+catOf(p.cat).name).includes(q)).slice(0,6);
   box.innerHTML=res.length
-    ?res.map(p=>`<a href="#/p/${p.id}" data-action="close-search-link"><img class="mono" src="${img(p,0,100,124)}" alt=""><span><span class="n">${p.name}</span><span class="c">${catOf(p.cat).name}</span></span><span class="p">${fmt(p.price)}</span></a>`).join('')
+    ?res.map(p=>`<a href="#/p/${p.id}" data-action="close-search-link"><img class="mono" src="${img(p,0)}" alt=""><span><span class="n">${p.name}</span><span class="c">${catOf(p.cat).name}</span></span><span class="p">${fmt(p.price)}</span></a>`).join('')
     :`<div class="s-none">لا نتائج تطابق «${q}» — جرّب كلمة أخرى.</div>`;
 }
 
@@ -1251,7 +1250,7 @@ document.addEventListener('click',e=>{
       $('#qtV').textContent=pdState.qty;break}
     case 'img':{
       const i=+el.dataset.i;
-      $('#pdImg').src=img(curP,i,900,1125);
+      $('#pdImg').src=img(curP,i);
       $$('.pd__thumbs button').forEach((b,bi)=>b.classList.toggle('on',bi===i));
       break}
     case 'tab':{
